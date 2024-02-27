@@ -52,16 +52,18 @@ const tempWatchedData = [
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
+  const query = "interstellar";
   // const [isOpen2, setIsOpen2] = useState(true);
 
   useEffect(function() {
     async function fetchMovies() {
       const res= await fetch(
         `http://www.omdbapi.com/?apikey=${KEY}&
-        s=interstellar`
+        s=${query}`
    );
    const data = await res.json();
    setMovies(data.Search);
+   console.log(data.Search);
  }
  fetchMovies();
 
@@ -131,7 +133,7 @@ const average = (arr) =>
  const NumResults=({movies}) => {
    return(
     <p className="num-results">
-      Found <strong>{movies.length}</strong> results
+       {/* Found <strong>{movies.length}</strong> results  */}
     </p>
    )
  }
